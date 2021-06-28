@@ -14,8 +14,10 @@ root@kesl#: go run main.go -h
 
 -fileSize int
         File size in bytes that need to be generate for KESL scan-file task (default 1000000)
--scansCount int
-        Number of tasks of scanning files in KESL (each task generate file for itself be ware with fileSize*scansCount formula) (default 10)
--threads int
-        Number of gorutines that need to be running concurrently (default 4)
+  -keslCommand string
+        kesl-control command for file scanning (default "/opt/kaspersky/kesl/bin/kesl-control --scan-file %s --action Skip")
+  -scansCount int
+        Number of tasks of scanning files in KESL (default 10)
+  -threads int
+        Number of gorutines that need to be running (default 4)
 ```
