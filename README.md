@@ -7,6 +7,11 @@ Run this command to get help
 ```bash
 go run main.go -h 
 ```
+If u used a binary
+```bash
+./main_deb64 -h
+```
+
 
 Help command output
 ```bash
