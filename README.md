@@ -1,5 +1,5 @@
 # kesl-benchmark
-Benchmark tool written on GoLang for Benchmarkin Kaspersky Endpoint Security for Linux installation
+Benchmark tool written in GoLang for Benchmarkin Kaspersky Endpoint Security for Linux installation
 
 With this tool you can simply check what number of files can check KESL in seconds
 
