@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/exec"
 	"sync"
+	"time"
 )
 
 func main() {
@@ -15,7 +16,7 @@ func main() {
 	//Check run params
 	threads := flag.Int("threads", 4, "Number of gorutines that need to be running")
 	scansCount := flag.Int("scansCount", 10, "Number of tasks of scanning files in KESL")
-	fileSize := flag.Int("fileSize", 1000000, "File size in bytes that need to be generate for KESL scan-file task")
+	fileSize := flag.Int("fileSize", 1000000, "File size in bytes that need to generate for KESL scan-file task")
 	keslCommand := flag.String("keslCommand", "/opt/kaspersky/kesl/bin/kesl-control --scan-file %s --action Skip", "kesl-control command for file scanning")
 
 	flag.Parse()
@@ -29,10 +30,13 @@ func main() {
 		go func() {
 			for cmd := range tasks {
 				cmd.Stderr = os.Stderr
+				start := time.Now()
 				_, err := cmd.Output()
 				if err != nil {
 					fmt.Printf("%v", err)
 				}
+				elapsed := time.Since(start)
+				log.Printf("Scanning took %s", elapsed)
 			}
 			wg.Done()
 		}()
